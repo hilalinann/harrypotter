@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../providers/hogwarts_students_provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'character_detail_screen.dart';
+import 'character_card.dart';
 
 class HogwartsStudentsScreen extends HookConsumerWidget {
   const HogwartsStudentsScreen({super.key});
@@ -74,19 +75,8 @@ class HogwartsStudentsScreen extends HookConsumerWidget {
                   itemCount: filtered.length,
                   itemBuilder: (context, index) {
                     final character = filtered[index];
-                    return ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: CachedNetworkImageProvider(
-                          character.image,
-                        ),
-                        onBackgroundImageError: (_, __) {},
-                        child:
-                            character.image.isEmpty
-                                ? const Icon(Icons.person)
-                                : null,
-                      ),
-                      title: Text(character.name),
-                      subtitle: Text(character.house),
+                    return CharacterCard(
+                      character: character,
                       onTap: () {
                         Navigator.push(
                           context,

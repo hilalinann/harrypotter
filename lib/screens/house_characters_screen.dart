@@ -3,7 +3,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../providers/house_characters_provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import '../screens/character_detail_screen.dart';
+import 'character_detail_screen.dart';
+import 'character_card.dart';
 
 class HouseCharactersScreen extends HookConsumerWidget {
   final String house;
@@ -74,19 +75,8 @@ class HouseCharactersScreen extends HookConsumerWidget {
                   itemCount: filtered.length,
                   itemBuilder: (context, index) {
                     final character = filtered[index];
-                    return ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: CachedNetworkImageProvider(
-                          character.image,
-                        ),
-                        onBackgroundImageError: (_, __) {},
-                        child:
-                            character.image.isEmpty
-                                ? const Icon(Icons.person)
-                                : null,
-                      ),
-                      title: Text(character.name),
-                      subtitle: Text(character.house),
+                    return CharacterCard(
+                      character: character,
                       onTap: () {
                         Navigator.push(
                           context,
