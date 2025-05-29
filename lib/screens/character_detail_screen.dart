@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/character.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'house_characters_screen.dart';
 
 class CharacterDetailScreen extends StatelessWidget {
   final Character character;
@@ -46,9 +47,23 @@ class CharacterDetailScreen extends StatelessWidget {
                     if (character.house.isNotEmpty)
                       Padding(
                         padding: const EdgeInsets.only(top: 4),
-                        child: Chip(
-                          label: Text(character.house),
-                          backgroundColor: Colors.deepPurple.shade50,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(16),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder:
+                                    (_) => HouseCharactersScreen(
+                                      house: character.house,
+                                    ),
+                              ),
+                            );
+                          },
+                          child: Chip(
+                            label: Text(character.house),
+                            backgroundColor: Colors.deepPurple.shade50,
+                          ),
                         ),
                       ),
                     if (character.actor.isNotEmpty)
