@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../providers/character_provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'character_detail_screen.dart';
 
 class AllCharactersScreen extends HookConsumerWidget {
   const AllCharactersScreen({super.key});
@@ -30,6 +31,15 @@ class AllCharactersScreen extends HookConsumerWidget {
                   ),
                   title: Text(character.name),
                   subtitle: Text(character.house),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (_) => CharacterDetailScreen(character: character),
+                      ),
+                    );
+                  },
                 );
               },
             ),
