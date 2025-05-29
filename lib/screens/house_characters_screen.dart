@@ -15,7 +15,7 @@ class HouseCharactersScreen extends HookConsumerWidget {
     final houseCharactersAsync = ref.watch(houseCharactersProvider(house));
     final selectedGender = useState('male');
     return Scaffold(
-      appBar: AppBar(title: Text('$house Characters')),
+      appBar: AppBar(title: Text(house)),
       body: Column(
         children: [
           Padding(

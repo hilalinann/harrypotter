@@ -79,7 +79,7 @@ class CharacterDetailScreen extends StatelessWidget {
                           'Played by: ${character.actor}',
                           style: const TextStyle(
                             fontSize: 16,
-                            color: Colors.grey,
+                            color: Colors.black,
                           ),
                         ),
                       ),
