@@ -27,12 +27,12 @@ class HogwartsStudentsScreen extends HookConsumerWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
                           selectedGender.value == 'male'
-                              ? Colors.deepPurple
-                              : Colors.deepPurple.shade50,
+                              ? Colors.black
+                              : Colors.grey.shade300,
                       foregroundColor:
                           selectedGender.value == 'male'
-                              ? Colors.white
-                              : Colors.deepPurple,
+                              ? Colors.amber
+                              : Colors.black,
                     ),
                     onPressed: () => selectedGender.value = 'male',
                     child: const Text('Boys'),
@@ -44,12 +44,12 @@ class HogwartsStudentsScreen extends HookConsumerWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
                           selectedGender.value == 'female'
-                              ? Colors.deepPurple
-                              : Colors.deepPurple.shade50,
+                              ? Colors.black
+                              : Colors.grey.shade300,
                       foregroundColor:
                           selectedGender.value == 'female'
-                              ? Colors.white
-                              : Colors.deepPurple,
+                              ? Colors.amber
+                              : Colors.black,
                     ),
                     onPressed: () => selectedGender.value = 'female',
                     child: const Text('Girls'),

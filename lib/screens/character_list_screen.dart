@@ -8,8 +8,8 @@ class CharacterListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Harry Potter'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        backgroundColor: const Color(0xFF740001),
+        foregroundColor: Colors.amber,
         elevation: 1,
       ),
       body: ListView(
