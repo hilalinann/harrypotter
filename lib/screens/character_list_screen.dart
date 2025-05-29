@@ -63,7 +63,7 @@ class _MenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.deepPurple.shade50,
+      color: Colors.black,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
@@ -73,7 +73,11 @@ class _MenuButton extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text(
             title,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
           ),
         ),
       ),

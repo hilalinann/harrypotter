@@ -16,7 +16,7 @@ class HouseSelectScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final house = houses[index];
           return Material(
-            color: Colors.deepPurple.shade50,
+            color: Colors.black,
             borderRadius: BorderRadius.circular(12),
             child: InkWell(
               borderRadius: BorderRadius.circular(12),
@@ -38,6 +38,7 @@ class HouseSelectScreen extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
+                    color: Colors.white,
                   ),
                 ),
               ),
