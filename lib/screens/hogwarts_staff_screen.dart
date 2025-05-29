@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import '../providers/hogwarts_staff_provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'character_detail_screen.dart';
 
 class HogwartsStaffScreen extends HookConsumerWidget {
   const HogwartsStaffScreen({super.key});
@@ -9,32 +11,102 @@ class HogwartsStaffScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final staffAsync = ref.watch(hogwartsStaffProvider);
+    final selectedGender = useState('male');
+
     return Scaffold(
       appBar: AppBar(title: const Text('Hogwarts Staff')),
-      body: staffAsync.when(
-        data:
-            (staff) => ListView.builder(
-              itemCount: staff.length,
-              itemBuilder: (context, index) {
-                final character = staff[index];
-                return ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: CachedNetworkImageProvider(
-                      character.image,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          selectedGender.value == 'male'
+                              ? Colors.deepPurple
+                              : Colors.deepPurple.shade50,
+                      foregroundColor:
+                          selectedGender.value == 'male'
+                              ? Colors.white
+                              : Colors.deepPurple,
                     ),
-                    onBackgroundImageError: (_, __) {},
-                    child:
-                        character.image.isEmpty
-                            ? const Icon(Icons.person)
-                            : null,
+                    onPressed: () => selectedGender.value = 'male',
+                    child: const Text('Boys'),
                   ),
-                  title: Text(character.name),
-                  subtitle: Text(character.house),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          selectedGender.value == 'female'
+                              ? Colors.deepPurple
+                              : Colors.deepPurple.shade50,
+                      foregroundColor:
+                          selectedGender.value == 'female'
+                              ? Colors.white
+                              : Colors.deepPurple,
+                    ),
+                    onPressed: () => selectedGender.value = 'female',
+                    child: const Text('Girls'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: staffAsync.when(
+              data: (staff) {
+                final filtered =
+                    staff
+                        .where(
+                          (c) => c.gender.toLowerCase() == selectedGender.value,
+                        )
+                        .toList();
+                if (filtered.isEmpty) {
+                  return const Center(child: Text('No staff found.'));
+                }
+                return ListView.builder(
+                  itemCount: filtered.length,
+                  itemBuilder: (context, index) {
+                    final character = filtered[index];
+                    return ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage: CachedNetworkImageProvider(
+                          character.image,
+                        ),
+                        onBackgroundImageError: (_, __) {},
+                        child:
+                            character.image.isEmpty
+                                ? const Icon(Icons.person)
+                                : null,
+                      ),
+                      title: Text(character.name),
+                      subtitle: Text(character.house),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (_) =>
+                                    CharacterDetailScreen(character: character),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 );
               },
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error:
+                  (error, stackTrace) => Center(child: Text('Error: $error')),
             ),
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stackTrace) => Center(child: Text('Error: $error')),
+          ),
+        ],
       ),
     );
   }
