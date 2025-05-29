@@ -26,14 +26,14 @@ class CharacterDetailScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     CircleAvatar(
-                      radius: 60,
+                      radius: 80,
                       backgroundImage: CachedNetworkImageProvider(
                         character.image,
                       ),
                       onBackgroundImageError: (_, __) {},
                       child:
                           character.image.isEmpty
-                              ? const Icon(Icons.person, size: 60)
+                              ? const Icon(Icons.person, size: 80)
                               : null,
                     ),
                     const SizedBox(height: 16),
@@ -61,8 +61,14 @@ class CharacterDetailScreen extends StatelessWidget {
                             );
                           },
                           child: Chip(
-                            label: Text(character.house),
-                            backgroundColor: Colors.deepPurple.shade50,
+                            label: Text(
+                              character.house,
+                              style: const TextStyle(
+                                color: Colors.amber,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            backgroundColor: Colors.black,
                           ),
                         ),
                       ),
@@ -186,7 +192,7 @@ class _InfoSection extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: Colors.deepPurple, size: 22),
+          Icon(icon, color: Colors.black, size: 22),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -217,7 +223,7 @@ class _WandSection extends StatelessWidget {
     }
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8),
-      color: Colors.deepPurple.shade50,
+      color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
@@ -225,20 +231,32 @@ class _WandSection extends StatelessWidget {
           children: [
             Row(
               children: const [
-                Icon(Icons.auto_fix_high, color: Colors.deepPurple),
+                Icon(Icons.auto_fix_high, color: Colors.black),
                 SizedBox(width: 8),
-                Text('Wand', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(
+                  'Wand',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 6),
             if (wand.wood.isNotEmpty)
-              Text('Wood: ${wand.wood}', style: const TextStyle(fontSize: 16)),
+              Text(
+                'Wood: ${wand.wood}',
+                style: const TextStyle(fontSize: 16, color: Colors.black),
+              ),
             if (wand.core.isNotEmpty)
-              Text('Core: ${wand.core}', style: const TextStyle(fontSize: 16)),
+              Text(
+                'Core: ${wand.core}',
+                style: const TextStyle(fontSize: 16, color: Colors.black),
+              ),
             if (wand.length != null)
               Text(
                 'Length: ${wand.length}',
-                style: const TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16, color: Colors.black),
               ),
           ],
         ),
