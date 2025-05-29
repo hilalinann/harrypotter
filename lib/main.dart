@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'screens/character_list_screen.dart';
+import 'screens/all_characters_screen.dart';
+import 'screens/hogwarts_students_screen.dart';
+import 'screens/hogwarts_staff_screen.dart';
+import 'screens/house_select_screen.dart';
+import 'screens/all_spells_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -34,6 +39,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const CharacterListScreen(),
+      routes: {
+        '/all-characters': (_) => const AllCharactersScreen(),
+        '/hogwarts-students': (_) => const HogwartsStudentsScreen(),
+        '/hogwarts-staff': (_) => const HogwartsStaffScreen(),
+        '/house-select': (_) => const HouseSelectScreen(),
+        '/all-spells': (_) => const AllSpellsScreen(),
+      },
     );
   }
 }

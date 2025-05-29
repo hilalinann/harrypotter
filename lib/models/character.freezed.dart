@@ -21,23 +21,28 @@ Character _$CharacterFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Character {
-  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'alternate_names')
   List<String> get alternateNames => throw _privateConstructorUsedError;
   String get species => throw _privateConstructorUsedError;
   String get gender => throw _privateConstructorUsedError;
   String get house => throw _privateConstructorUsedError;
+  @JsonKey(name: 'dateOfBirth')
   String? get dateOfBirth => throw _privateConstructorUsedError;
+  @JsonKey(name: 'yearOfBirth')
   int? get yearOfBirth => throw _privateConstructorUsedError;
   bool get wizard => throw _privateConstructorUsedError;
   String get ancestry => throw _privateConstructorUsedError;
+  @JsonKey(name: 'eyeColour')
   String get eyeColour => throw _privateConstructorUsedError;
+  @JsonKey(name: 'hairColour')
   String get hairColour => throw _privateConstructorUsedError;
   Wand get wand => throw _privateConstructorUsedError;
   String get patronus => throw _privateConstructorUsedError;
   bool get hogwartsStudent => throw _privateConstructorUsedError;
   bool get hogwartsStaff => throw _privateConstructorUsedError;
   String get actor => throw _privateConstructorUsedError;
+  @JsonKey(name: 'alternate_actors')
   List<String> get alternateActors => throw _privateConstructorUsedError;
   bool get alive => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
@@ -58,24 +63,23 @@ abstract class $CharacterCopyWith<$Res> {
       _$CharacterCopyWithImpl<$Res, Character>;
   @useResult
   $Res call({
-    String id,
     String name,
-    List<String> alternateNames,
+    @JsonKey(name: 'alternate_names') List<String> alternateNames,
     String species,
     String gender,
     String house,
-    String? dateOfBirth,
-    int? yearOfBirth,
+    @JsonKey(name: 'dateOfBirth') String? dateOfBirth,
+    @JsonKey(name: 'yearOfBirth') int? yearOfBirth,
     bool wizard,
     String ancestry,
-    String eyeColour,
-    String hairColour,
+    @JsonKey(name: 'eyeColour') String eyeColour,
+    @JsonKey(name: 'hairColour') String hairColour,
     Wand wand,
     String patronus,
     bool hogwartsStudent,
     bool hogwartsStaff,
     String actor,
-    List<String> alternateActors,
+    @JsonKey(name: 'alternate_actors') List<String> alternateActors,
     bool alive,
     String image,
   });
@@ -98,7 +102,6 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? name = null,
     Object? alternateNames = null,
     Object? species = null,
@@ -121,11 +124,6 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
   }) {
     return _then(
       _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as String,
             name:
                 null == name
                     ? _value.name
@@ -247,24 +245,23 @@ abstract class _$$CharacterImplCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    String id,
     String name,
-    List<String> alternateNames,
+    @JsonKey(name: 'alternate_names') List<String> alternateNames,
     String species,
     String gender,
     String house,
-    String? dateOfBirth,
-    int? yearOfBirth,
+    @JsonKey(name: 'dateOfBirth') String? dateOfBirth,
+    @JsonKey(name: 'yearOfBirth') int? yearOfBirth,
     bool wizard,
     String ancestry,
-    String eyeColour,
-    String hairColour,
+    @JsonKey(name: 'eyeColour') String eyeColour,
+    @JsonKey(name: 'hairColour') String hairColour,
     Wand wand,
     String patronus,
     bool hogwartsStudent,
     bool hogwartsStaff,
     String actor,
-    List<String> alternateActors,
+    @JsonKey(name: 'alternate_actors') List<String> alternateActors,
     bool alive,
     String image,
   });
@@ -287,7 +284,6 @@ class __$$CharacterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? name = null,
     Object? alternateNames = null,
     Object? species = null,
@@ -310,11 +306,6 @@ class __$$CharacterImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$CharacterImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as String,
         name:
             null == name
                 ? _value.name
@@ -419,23 +410,24 @@ class __$$CharacterImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CharacterImpl implements _Character {
   const _$CharacterImpl({
-    required this.id,
     required this.name,
+    @JsonKey(name: 'alternate_names')
     required final List<String> alternateNames,
     required this.species,
     required this.gender,
     required this.house,
-    required this.dateOfBirth,
-    required this.yearOfBirth,
+    @JsonKey(name: 'dateOfBirth') this.dateOfBirth,
+    @JsonKey(name: 'yearOfBirth') this.yearOfBirth,
     required this.wizard,
     required this.ancestry,
-    required this.eyeColour,
-    required this.hairColour,
+    @JsonKey(name: 'eyeColour') required this.eyeColour,
+    @JsonKey(name: 'hairColour') required this.hairColour,
     required this.wand,
     required this.patronus,
     required this.hogwartsStudent,
     required this.hogwartsStaff,
     required this.actor,
+    @JsonKey(name: 'alternate_actors')
     required final List<String> alternateActors,
     required this.alive,
     required this.image,
@@ -446,11 +438,10 @@ class _$CharacterImpl implements _Character {
       _$$CharacterImplFromJson(json);
 
   @override
-  final String id;
-  @override
   final String name;
   final List<String> _alternateNames;
   @override
+  @JsonKey(name: 'alternate_names')
   List<String> get alternateNames {
     if (_alternateNames is EqualUnmodifiableListView) return _alternateNames;
     // ignore: implicit_dynamic_type
@@ -464,16 +455,20 @@ class _$CharacterImpl implements _Character {
   @override
   final String house;
   @override
+  @JsonKey(name: 'dateOfBirth')
   final String? dateOfBirth;
   @override
+  @JsonKey(name: 'yearOfBirth')
   final int? yearOfBirth;
   @override
   final bool wizard;
   @override
   final String ancestry;
   @override
+  @JsonKey(name: 'eyeColour')
   final String eyeColour;
   @override
+  @JsonKey(name: 'hairColour')
   final String hairColour;
   @override
   final Wand wand;
@@ -487,6 +482,7 @@ class _$CharacterImpl implements _Character {
   final String actor;
   final List<String> _alternateActors;
   @override
+  @JsonKey(name: 'alternate_actors')
   List<String> get alternateActors {
     if (_alternateActors is EqualUnmodifiableListView) return _alternateActors;
     // ignore: implicit_dynamic_type
@@ -500,7 +496,7 @@ class _$CharacterImpl implements _Character {
 
   @override
   String toString() {
-    return 'Character(id: $id, name: $name, alternateNames: $alternateNames, species: $species, gender: $gender, house: $house, dateOfBirth: $dateOfBirth, yearOfBirth: $yearOfBirth, wizard: $wizard, ancestry: $ancestry, eyeColour: $eyeColour, hairColour: $hairColour, wand: $wand, patronus: $patronus, hogwartsStudent: $hogwartsStudent, hogwartsStaff: $hogwartsStaff, actor: $actor, alternateActors: $alternateActors, alive: $alive, image: $image)';
+    return 'Character(name: $name, alternateNames: $alternateNames, species: $species, gender: $gender, house: $house, dateOfBirth: $dateOfBirth, yearOfBirth: $yearOfBirth, wizard: $wizard, ancestry: $ancestry, eyeColour: $eyeColour, hairColour: $hairColour, wand: $wand, patronus: $patronus, hogwartsStudent: $hogwartsStudent, hogwartsStaff: $hogwartsStaff, actor: $actor, alternateActors: $alternateActors, alive: $alive, image: $image)';
   }
 
   @override
@@ -508,7 +504,6 @@ class _$CharacterImpl implements _Character {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CharacterImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(
               other._alternateNames,
@@ -548,7 +543,6 @@ class _$CharacterImpl implements _Character {
   @override
   int get hashCode => Object.hashAll([
     runtimeType,
-    id,
     name,
     const DeepCollectionEquality().hash(_alternateNames),
     species,
@@ -586,23 +580,24 @@ class _$CharacterImpl implements _Character {
 
 abstract class _Character implements Character {
   const factory _Character({
-    required final String id,
     required final String name,
+    @JsonKey(name: 'alternate_names')
     required final List<String> alternateNames,
     required final String species,
     required final String gender,
     required final String house,
-    required final String? dateOfBirth,
-    required final int? yearOfBirth,
+    @JsonKey(name: 'dateOfBirth') final String? dateOfBirth,
+    @JsonKey(name: 'yearOfBirth') final int? yearOfBirth,
     required final bool wizard,
     required final String ancestry,
-    required final String eyeColour,
-    required final String hairColour,
+    @JsonKey(name: 'eyeColour') required final String eyeColour,
+    @JsonKey(name: 'hairColour') required final String hairColour,
     required final Wand wand,
     required final String patronus,
     required final bool hogwartsStudent,
     required final bool hogwartsStaff,
     required final String actor,
+    @JsonKey(name: 'alternate_actors')
     required final List<String> alternateActors,
     required final bool alive,
     required final String image,
@@ -612,10 +607,9 @@ abstract class _Character implements Character {
       _$CharacterImpl.fromJson;
 
   @override
-  String get id;
-  @override
   String get name;
   @override
+  @JsonKey(name: 'alternate_names')
   List<String> get alternateNames;
   @override
   String get species;
@@ -624,16 +618,20 @@ abstract class _Character implements Character {
   @override
   String get house;
   @override
+  @JsonKey(name: 'dateOfBirth')
   String? get dateOfBirth;
   @override
+  @JsonKey(name: 'yearOfBirth')
   int? get yearOfBirth;
   @override
   bool get wizard;
   @override
   String get ancestry;
   @override
+  @JsonKey(name: 'eyeColour')
   String get eyeColour;
   @override
+  @JsonKey(name: 'hairColour')
   String get hairColour;
   @override
   Wand get wand;
@@ -646,6 +644,7 @@ abstract class _Character implements Character {
   @override
   String get actor;
   @override
+  @JsonKey(name: 'alternate_actors')
   List<String> get alternateActors;
   @override
   bool get alive;
@@ -781,11 +780,7 @@ class __$$WandImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$WandImpl implements _Wand {
-  const _$WandImpl({
-    required this.wood,
-    required this.core,
-    required this.length,
-  });
+  const _$WandImpl({required this.wood, required this.core, this.length});
 
   factory _$WandImpl.fromJson(Map<String, dynamic> json) =>
       _$$WandImplFromJson(json);
@@ -834,7 +829,7 @@ abstract class _Wand implements Wand {
   const factory _Wand({
     required final String wood,
     required final String core,
-    required final double? length,
+    final double? length,
   }) = _$WandImpl;
 
   factory _Wand.fromJson(Map<String, dynamic> json) = _$WandImpl.fromJson;

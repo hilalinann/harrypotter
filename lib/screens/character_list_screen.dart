@@ -1,76 +1,81 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import '../providers/character_provider.dart';
 
-class CharacterListScreen extends HookConsumerWidget {
+class CharacterListScreen extends StatelessWidget {
   const CharacterListScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final charactersAsync = ref.watch(charactersProvider);
-
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Harry Potter Characters'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('Harry Potter'),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 1,
       ),
-      body: charactersAsync.when(
-        data:
-            (characters) => RefreshIndicator(
-              onRefresh: () => ref.read(charactersProvider.notifier).refresh(),
-              child: ListView.builder(
-                itemCount: characters.length,
-                itemBuilder: (context, index) {
-                  final character = characters[index];
-                  return Card(
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 8,
-                    ),
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: CachedNetworkImageProvider(
-                          character.image,
-                        ),
-                        onBackgroundImageError: (_, __) {},
-                        child:
-                            character.image.isEmpty
-                                ? const Icon(Icons.person)
-                                : null,
-                      ),
-                      title: Text(character.name),
-                      subtitle: Text(character.house),
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () {
-                        // TODO: Implement character detail screen
-                      },
-                    ),
-                  );
-                },
-              ),
-            ),
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error:
-            (error, stackTrace) => Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.error_outline, size: 48, color: Colors.red),
-                  const SizedBox(height: 16),
-                  Text(
-                    'Error: ${error.toString()}',
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.red),
-                  ),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () => ref.refresh(charactersProvider),
-                    child: const Text('Retry'),
-                  ),
-                ],
-              ),
-            ),
+      body: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+        children: [
+          _MenuButton(
+            title: 'All Characters',
+            onTap: () {
+              Navigator.pushNamed(context, '/all-characters');
+            },
+          ),
+          const SizedBox(height: 16),
+          _MenuButton(
+            title: 'Hogwarts Students',
+            onTap: () {
+              Navigator.pushNamed(context, '/hogwarts-students');
+            },
+          ),
+          const SizedBox(height: 16),
+          _MenuButton(
+            title: 'Hogwarts Staff',
+            onTap: () {
+              Navigator.pushNamed(context, '/hogwarts-staff');
+            },
+          ),
+          const SizedBox(height: 16),
+          _MenuButton(
+            title: 'Characters in a House',
+            onTap: () {
+              Navigator.pushNamed(context, '/house-select');
+            },
+          ),
+          const SizedBox(height: 16),
+          _MenuButton(
+            title: 'All Spells',
+            onTap: () {
+              Navigator.pushNamed(context, '/all-spells');
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _MenuButton extends StatelessWidget {
+  final String title;
+  final VoidCallback onTap;
+  const _MenuButton({required this.title, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.deepPurple.shade50,
+      borderRadius: BorderRadius.circular(12),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+          alignment: Alignment.centerLeft,
+          child: Text(
+            title,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          ),
+        ),
       ),
     );
   }

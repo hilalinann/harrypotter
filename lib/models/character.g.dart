@@ -8,10 +8,9 @@ part of 'character.dart';
 
 _$CharacterImpl _$$CharacterImplFromJson(Map<String, dynamic> json) =>
     _$CharacterImpl(
-      id: json['id'] as String,
       name: json['name'] as String,
       alternateNames:
-          (json['alternateNames'] as List<dynamic>)
+          (json['alternate_names'] as List<dynamic>)
               .map((e) => e as String)
               .toList(),
       species: json['species'] as String,
@@ -29,7 +28,7 @@ _$CharacterImpl _$$CharacterImplFromJson(Map<String, dynamic> json) =>
       hogwartsStaff: json['hogwartsStaff'] as bool,
       actor: json['actor'] as String,
       alternateActors:
-          (json['alternateActors'] as List<dynamic>)
+          (json['alternate_actors'] as List<dynamic>)
               .map((e) => e as String)
               .toList(),
       alive: json['alive'] as bool,
@@ -38,9 +37,8 @@ _$CharacterImpl _$$CharacterImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$CharacterImplToJson(_$CharacterImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'name': instance.name,
-      'alternateNames': instance.alternateNames,
+      'alternate_names': instance.alternateNames,
       'species': instance.species,
       'gender': instance.gender,
       'house': instance.house,
@@ -55,7 +53,7 @@ Map<String, dynamic> _$$CharacterImplToJson(_$CharacterImpl instance) =>
       'hogwartsStudent': instance.hogwartsStudent,
       'hogwartsStaff': instance.hogwartsStaff,
       'actor': instance.actor,
-      'alternateActors': instance.alternateActors,
+      'alternate_actors': instance.alternateActors,
       'alive': instance.alive,
       'image': instance.image,
     };
