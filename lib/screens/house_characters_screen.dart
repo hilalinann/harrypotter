@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../providers/house_characters_provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import '../screens/character_detail_screen.dart';
 
 class HouseCharactersScreen extends HookConsumerWidget {
   final String house;
@@ -31,6 +32,15 @@ class HouseCharactersScreen extends HookConsumerWidget {
                   ),
                   title: Text(character.name),
                   subtitle: Text(character.house),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (_) => CharacterDetailScreen(character: character),
+                      ),
+                    );
+                  },
                 );
               },
             ),
