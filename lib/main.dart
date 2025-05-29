@@ -46,6 +46,7 @@ class MyApp extends StatelessWidget {
         '/house-select': (_) => const HouseSelectScreen(),
         '/all-spells': (_) => const AllSpellsScreen(),
       },
+      debugShowCheckedModeBanner: false,
     );
   }
 }
